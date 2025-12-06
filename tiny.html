@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoScrap | Premium Recycling Lucknow</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f4f7f4;
+            color: #1b1b1b;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            height: 80px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #2e7d32;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logo span {
+            color: #4caf50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333333;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #4caf50;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #2e7d32;
+        }
+
+        .btn-nav {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            color: #ffffff !important;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+        }
+        
+        .btn-nav::after {
+            display: none;
+        }
+
+        .hero {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(10, 30, 10, 0.75), rgba(10, 30, 10, 0.6)), url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            max-width: 900px;
+            line-height: 1.1;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            min-height: 4.4rem;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #4caf50;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            max-width: 650px;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .btn-primary {
+            padding: 16px 40px;
+            background: linear-gradient(45deg, #4caf50, #2e7d32);
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.6);
+        }
+
+        .btn-secondary {
+            padding: 16px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #ffffff;
+            color: #2e7d32;
+            transform: translateY(-5px);
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: #ffffff;
+            padding: 40px 5%;
+            width: 85%;
+            margin: -100px auto 0 auto;
+            position: relative;
+            z-index: 10;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: reveal-anim linear both;
+            animation-timeline: view();
+            animation-range: entry 20% cover 40%;
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-item::after {
+            content: '';
+            position: absolute;
+            right: -50%;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: #eeeeee;
+        }
+
+        .stat-item:last-child::after {
+            display: none;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: -webkit-linear-gradient(#2e7d32, #4caf50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #555555;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1b1b1b;
+            margin-bottom: 60px;
+            position: relative;
+            animation: reveal-anim linear both;
+            animation-timeline: view();
+            animation-range: entry 20% cover 30%;
+        }
+
+        .section-title span {
+            color: #4caf50;
+        }
+
+        .rates-section {
+            padding: 100px 5%;
+        }
+
+        .rates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .rate-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #f0f0f0;
+            
+        }
+
+        .rate-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(46, 125, 50, 0.15);
+            border-color: #4caf50;
+        }
+
+        .card-img-wrapper {
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+        }
+
+        .card-img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .rate-card:hover .card-img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .item-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #333333;
+        }
+
+        .item-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #2e7d32;
+        }
+
+        .item-unit {
+            font-size: 0.9rem;
+            color: #888888;
+            font-weight: 500;
+        }
+
+        .tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: #ffffff;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(245, 124, 0, 0.3);
+            z-index: 10;
+        }
+
+        .tag.best {
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+        }
+
+        .ai-section {
+            padding: 100px 5%;
+            background: #f0f4f8;
+            position: relative;
+            overflow: hidden;
+            animation: reveal-anim linear both;
+            animation-timeline: view();
+            animation-range: entry 20% cover 50%;
+        }
+        
+        .ai-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(33, 150, 243, 0.05);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .ai-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #ffffff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ai-header h2 {
+            font-size: 2.5rem;
+            color: #0277bd;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .ai-header p {
+            color: #555555;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .ai-input-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .ai-input {
+            padding: 18px 30px;
+            background: #f9f9f9;
+            border: 2px solid #eeeeee;
+            border-radius: 50px;
+            width: 100%;
+            max-width: 450px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .ai-input:focus {
+            border-color: #0277bd;
+            background: #ffffff;
+            box-shadow: 0 5px 15px rgba(2, 119, 189, 0.1);
+        }
+
+        .btn-ai {
+            padding: 18px 35px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-ask {
+            background: linear-gradient(135deg, #0288d1, #03a9f4);
+        }
+        
+        .btn-ask:hover {
+            background: linear-gradient(135deg, #01579b, #0288d1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(3, 169, 244, 0.3);
+        }
+        
+        .btn-diy {
+            background: linear-gradient(135deg, #c2185b, #e91e63);
+        }
+
+        .btn-diy:hover {
+            background: linear-gradient(135deg, #880e4f, #c2185b);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .ai-result {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: left;
+            min-height: 100px;
+            display: none;
+            border-left: 6px solid #0277bd;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .process-section {
+            background-color: #ffffff;
+            padding: 100px 5%;
+        }
+
+        .process-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            flex: 1 1 280px;
+            text-align: center;
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.3s;
+            border: 1px solid #f5f5f5;
+            animation: reveal-anim linear both;
+            animation-timeline: view();
+            animation-range: entry 20% cover 40%;
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #2e7d32, #4caf50);
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        .process-step h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #1b1b1b;
+        }
+        
+        .process-step p {
+            color: #666;
+        }
+
+        .footer {
+            background: #111111;
+            color: #ffffff;
+            padding: 80px 5% 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4caf50;
+        }
+
+        .footer p {
+            color: #888888;
+        }
+
+        .contact-btn-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #00C853, #69F0AE);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 25px rgba(0, 200, 83, 0.4);
+            text-decoration: none;
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: pulse 2s infinite;
+            cursor: pointer;
+        }
+
+        .contact-btn-float:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(0, 200, 83, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+        }
+        
+        @keyframes reveal-anim {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 5%;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 30px;
+                padding: 30px;
+                width: 90%;
+            }
+
+            .stat-item::after {
+                display: none;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary, .ai-input {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .ai-input-group {
+                flex-direction: column;
+            }
+            
+            .contact-btn-float {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Eco<span>Scrap</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#rates">Live Rates</a></li>
+            <li><a href="#ai-tools">AI Tools</a></li>
+            <li><a href="#process">How it Works</a></li>
+            <li><a href="#contact" class="btn-nav">Sell Scrap</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1 id="typewriter-h1"><span id="typewriter-text"></span><span class="cursor"></span></h1>
+        
+        <p>The smartest way to recycle in Lucknow. We pick up from your doorstep, ensure eco-friendly disposal, and pay you instantly.</p>
+        <div class="cta-group">
+            <a href="#rates" class="btn-primary">Check Prices</a>
+            <a href="#ai-tools" class="btn-secondary">Ask AI Expert</a>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-number">1,200+</span>
+            <span class="stat-label">Homes Serviced</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">₹45k+</span>
+            <span class="stat-label">Paid to Users</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">500kg</span>
+            <span class="stat-label">Plastic Saved</span>
+        </div>
+    </div>
+
+    <section class="rates-section" id="rates">
+        <h2 class="section-title">Current Scrap Rates <span>Lucknow</span></h2>
+        <div class="rates-grid">
+            
+            <div class="rate-card">
+                <div class="tag best">High Demand</div>
+                <div class="card-img-wrapper">
+                    <img src="https://www.thestatesman.com/wp-content/uploads/2021/12/raddi-1024x683.jpg" alt="Paper" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="item-name">Newspaper (Raddi)</div>
+                    <div class="item-price">₹14</div>
+                    <div class="item-unit">per kg</div>
+                </div>
+            </div>
+
+            <div class="rate-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Metal" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="item-name">Iron & Metal</div>
+                    <div class="item-price">₹28</div>
+                    <div class="item-unit">per kg</div>
+                </div>
+            </div>
+
+            <div class="rate-card">
+                <div class="tag">Eco Hero</div>
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Plastic" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="item-name">Plastic Bottles</div>
+                    <div class="item-price">₹12</div>
+                    <div class="item-unit">per kg</div>
+                </div>
+            </div>
+
+            <div class="rate-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Electronics" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="item-name">E-Waste</div>
+                    <div class="item-price">₹40</div>
+                    <div class="item-unit">per kg</div>
+                </div>
+            </div>
+
+            <div class="rate-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Cardboard" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="item-name">Cardboard</div>
+                    <div class="item-price">₹8</div>
+                    <div class="item-unit">per kg</div>
+                </div>
+            </div>
+
+            <div class="rate-card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1558583055-d7ac00b1adca?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Steel" class="card-img">
+                </div>
+                <div class="card-content">
+                    <div class="item-name">Steel</div>
+                    <div class="item-price">₹35</div>
+                    <div class="item-unit">per kg</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="ai-section" id="ai-tools">
+        <div class="ai-container">
+            <div class="ai-header">
+                <h2>✨ Eco-Genius AI</h2>
+                <p>Not sure if it's recyclable? Or want a cool DIY idea? Ask our AI!</p>
+            </div>
+            
+            <div class="ai-input-group">
+                <input type="text" id="userPrompt" class="ai-input" placeholder="e.g., 'Pizza Box' or 'Old Jeans'">
+                <button onclick="mockAI()" class="btn-ai btn-ask">✨ Ask Expert</button>
+                <button onclick="mockAI()" class="btn-ai btn-diy">🎨 DIY Ideas</button>
+            </div>
+
+            <div id="loading" class="ai-loading" style="display:none; color: #0277bd; font-weight:600;">Thinking... 🍃</div>
+            <div id="aiResult" class="ai-result">
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section" id="process">
+        <h2 class="section-title">How It Works</h2>
+        <div class="process-container">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Collect Scrap</h3>
+                <p>Gather your newspapers, plastics, and old electronics at home.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Book Pickup</h3>
+                <p>Click the button below to connect with a dealer in your area.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Get Paid Cash</h3>
+                <p>The dealer weighs your scrap and pays you instantly via cash or UPI.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <h2>EcoScrap Lucknow</h2>
+        <p>Making Lucknow Cleaner, One Pickup at a Time.</p>
+        <br>
+        <p>&copy; 2024 EcoScrap Project. All rights reserved.</p>
+    </footer>
+
+    <div class="contact-btn-float" onclick="contactDealer()">
+        📞
+    </div>
+
+    <script>
+        const text = "Turn Your Waste \n Into Wealth"; 
+        
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                const char = text.charAt(i);
+                if(char === '\n') {
+                    document.getElementById("typewriter-text").innerHTML += "<br>";
+                } else {
+                    document.getElementById("typewriter-text").innerHTML += char;
+                }
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        window.onload = function() {
+            typeWriter();
+        };
+        
+        function mockAI() {
+            const input = document.getElementById('userPrompt').value;
+            const resultBox = document.getElementById('aiResult');
+            const loading = document.getElementById('loading');
+            
+            if (!input) {
+                alert("Please enter an item name first!");
+                return;
+            }
+
+            loading.style.display = 'block';
+            resultBox.style.display = 'none';
+
+            setTimeout(() => {
+                loading.style.display = 'none';
+                resultBox.innerHTML = `<strong>Demo Mode:</strong> <br> That's a great item! In the full version, our AI would tell you exactly how to recycle <em>"${input}"</em> or give you creative DIY ideas. <br><br> (This is a static demo for the competition).`;
+                resultBox.style.display = 'block';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
